@@ -10,45 +10,50 @@ blueprint:
           entity:
             domain: climate
     temperature_scheduled:
-      name: Température Schédulé
+      name: Température Cédulé
       description: Température à configurer lorsque le sensor.defi_hilo est dans le statut scheduled.
       selector:
         number:
+          step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: celcius
+          unit_of_measurement: °C
     temperature_appreciation:
       name: Température lors des périodes d'ancrage
-      description: Température à configurer lorsque le sensor.defi_hilo est dans le statut appreciation. C'est la température à à configurer lorsque le système est dans sa période d'ancrage.
+      description: Température à configurer lorsque le sensor.defi_hilo est dans le statut appreciation. C'est la température à configurer lorsque le système est dans sa période d'ancrage.
       selector:
         number:
+          step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: celcius      
+          unit_of_measurement: °C      
     temperature_pre_heat:
-      name: Température de Pré Chauffage
+      name: Température de Préchauffage
       description: Température à configurer lorsque le sensor.defi_hilo est dans le statut pre_heat. C'est la température à monter la maison avant le début du défi.
       selector:
         number:
+          step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: celcius
+          unit_of_measurement: °C
     temperature_reduction:
       name: Température lors du défi
       description: Température à configurer lorsque le sensor.defi_hilo est dans le statut reduction. C'est la température à descendre la maison lors du début du défi.
       selector:
         number:
+          step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: celcius
+          unit_of_measurement: °C
     temperature_recovery:
       name: Température de retour à la normale
       description: Température à configurer lorsque le sensor.defi_hilo est dans le statut recovery. C'est la température de retour à la normale après le défi.
       selector:
         number:
+          step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: celcius    
+          unit_of_measurement: °C    
 variables:
   temperature_scheduled_state: !input temperature_scheduled
   temperature_appreciation_state: !input temperature_appreciation
