@@ -26,7 +26,7 @@ blueprint:
           step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: °C      
+          unit_of_measurement: °C
     temperature_pre_heat:
       name: Température de Préchauffage
       description: Température à configurer lorsque le sensor.defi_hilo est dans le statut pre_heat. C'est la température à monter la maison avant le début du défi.
@@ -53,13 +53,7 @@ blueprint:
           step: 0.5
           min: 15
           max: 25
-          unit_of_measurement: °C    
-variables:
-  temperature_scheduled_state: !input temperature_scheduled
-  temperature_appreciation_state: !input temperature_appreciation
-  temperature_pre_heat_state: !input temperature_pre_heat
-  temperature_reduction_state: !input temperature_reduction
-  temperature_recovery_state: !input temperature_recovery  
+          unit_of_measurement: °C  
 triggers:
   - trigger: state
     entity_id: sensor.defi_hilo
@@ -89,7 +83,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ temperature_scheduled_state }}"
+              temperature: !input temperature_scheduled
             target: !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -97,7 +91,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ temperature_pre_heat_state }}"
+              temperature: !input temperature_pre_heat
             target: !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -105,7 +99,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ temperature_reduction_state }}"
+              temperature: !input temperature_reduction
             target: !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -113,7 +107,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ temperature_recovery_state }}"
+              temperature: !input temperature_recovery
             target: !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -121,5 +115,5 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ temperature_appreciation_state }}"
+              temperature: !input temperature_appreciation
             target: !input thermostats_defi
